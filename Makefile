@@ -209,6 +209,9 @@ warn-auto.sh choose.sh conf-home
 	> choose
 	chmod 755 choose
 
+clean:
+	rm -f *.o *.exe
+
 compile: \
 warn-auto.sh conf-cc
 	( cat warn-auto.sh; \
