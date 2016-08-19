@@ -210,7 +210,7 @@ warn-auto.sh choose.sh conf-home
 	chmod 755 choose
 
 clean:
-	rm -f *.o *.exe
+	rm -f *.o *.a *.lib *.exe
 
 compile: \
 warn-auto.sh conf-cc
@@ -319,6 +319,10 @@ dns_txt.o: \
 compile dns_txt.c stralloc.h gen_alloc.h uint16.h byte.h dns.h \
 stralloc.h iopause.h taia.h tai.h uint64.h taia.h
 	./compile dns_txt.c
+
+dns_winresolv.o: \
+compile dns_winresolv.c
+	./compile dns_winresolv.c
 
 dnscache: \
 load dnscache.o droproot.o okclient.o log.o cache.o query.o \
