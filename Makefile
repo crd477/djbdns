@@ -231,11 +231,11 @@ choose compile trydrent.c direntry.h1 direntry.h2
 dns.a: \
 makelib dns_dfd.o dns_domain.o dns_dtda.o dns_ip.o dns_ipq.o dns_mx.o \
 dns_name.o dns_nd.o dns_packet.o dns_random.o dns_rcip.o dns_rcrw.o \
-dns_resolve.o dns_sortip.o dns_transmit.o dns_txt.o
+dns_resolve.o dns_sortip.o dns_transmit.o dns_txt.o dns_winresolv.o
 	./makelib dns.a dns_dfd.o dns_domain.o dns_dtda.o dns_ip.o \
 	dns_ipq.o dns_mx.o dns_name.o dns_nd.o dns_packet.o \
 	dns_random.o dns_rcip.o dns_rcrw.o dns_resolve.o \
-	dns_sortip.o dns_transmit.o dns_txt.o
+	dns_sortip.o dns_transmit.o dns_txt.o dns_winresolv.o
 
 dns_dfd.o: \
 compile dns_dfd.c error.h alloc.h byte.h dns.h stralloc.h gen_alloc.h \
@@ -795,8 +795,8 @@ compile sgetopt.c buffer.h sgetopt.h subgetopt.h subgetopt.h
 socket.lib: \
 trylsock.c compile load
 	( ( ./compile trylsock.c && \
-	./load trylsock -lsocket -lnsl ) >/dev/null 2>&1 \
-	&& echo -lsocket -lnsl || exit 0 ) > socket.lib
+	./load trylsock -liphlpapi ) >/dev/null 2>&1 \
+	&& echo -liphlpapi || exit 0 ) > socket.lib
 	rm -f trylsock.o trylsock
 
 socket_accept.o: \
