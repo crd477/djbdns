@@ -62,6 +62,7 @@ extern void dns_transmit_free(struct dns_transmit *);
 extern void dns_transmit_io(struct dns_transmit *,iopause_fd *,struct taia *);
 extern int dns_transmit_get(struct dns_transmit *,const iopause_fd *,const struct taia *);
 
+extern char *dns_winresolv(void);
 extern int dns_resolvconfip(char *);
 extern int dns_resolve(const char *,const char *);
 extern struct dns_transmit dns_resolve_tx;

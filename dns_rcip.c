@@ -28,6 +28,20 @@ static int init(char ip[64])
     }
 
   if (!iplen) {
+#ifdef __CYGWIN__
+	x = dns_winresolv();
+	if (x)
+      while (iplen <= 60) {
+    	if (*x == '.')
+      ++x;
+	    else {
+	      i = ip4_scan(x,ip + iplen);
+      if (!i) break;
+      x += i;
+      iplen += 4;
+	    }
+	  }
+#else
     i = openreadclose("/etc/resolv.conf",&data,64);
     if (i == -1) return -1;
     if (i) {
@@ -49,6 +63,7 @@ static int init(char ip[64])
           i = j + 1;
         }
     }
+#endif
   }
 
   if (!iplen) {

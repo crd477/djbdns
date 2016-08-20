@@ -92,6 +92,7 @@ dns_resolve.c
 dns_sortip.c
 dns_transmit.c
 dns_txt.c
+dns_winresolv.c
 choose.sh
 warn-auto.sh
 find-systype.sh
